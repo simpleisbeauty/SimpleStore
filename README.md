@@ -1,4 +1,6 @@
-SimpleStore is open source simple store similar to AWS S3, which has store input/output stream can be used for any application to switch from local IO to directly cloud IO.
+<pre>
+SimpleStore is open source simple store similar to AWS S3, which has store input/output stream can be used for any application to switch from local IO 
+to direct cloud IO.
 
 
 store-io: Store IO interface with Cassandra implementation with following features
@@ -24,9 +26,15 @@ store-io: Store IO interface with Cassandra implementation with following featur
              configuration (util/LatestConfig).
          11. Auto increasing/decreasing Connection pool size, and runtime changeable pool configuration to dynamically tune store performance.
 
+         Future Improvements:
+          1. Add full search of File/Dir meta data
+          2. Add File and Dir permission setting in meta data.
+
 
 store-service: Store Restful Service wrapping store-io for any UI or application integration
-               mvn package, copy store.war to any Java Servlet Container webapps folder, e.g. http://localhost:8080/store/api/ to manage any store e.g. maven2
+               build/deploy: mvn package, copy store.war to any Java Servlet Container webapps folder, e.g. http://localhost:8080/store/api/{store_name}
+                             to manage any store.
+
                create bucket: curl -X POST -H "act:create_store" http://localhost:8080/store/api/maven2/
                delete bucket: curl -X DELETE -H "act:delete_store" http://localhost:8080/store/api/maven2/
                housekeeping: curl -X DELETE -H "act:housekeeping" http://localhost:8080/store/api/maven2/
@@ -65,3 +73,4 @@ maven-repo: Maven repo based on store-io, also has a simple local file system re
                        <url>http://localhost:8080/maven2/repo</url>
                    </repository>
             4. Use store-service (store.war) to manage the maven2 repo.
+</pre>
